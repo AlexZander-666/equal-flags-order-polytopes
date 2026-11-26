@@ -1,0 +1,122 @@
+name = "same_flag_polytopes"
+version = "0.1.0"
+defaultTargets = ["TruncatedAudit"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "0df444a360eaa60ab8c11dca51a86af692955474"
+
+[[lean_lib]]
+name = "Codim3ComputedSums"
+
+[[lean_lib]]
+name = "Codim3PhysicalCoefficients"
+
+[[lean_lib]]
+name = "Polygon"
+
+[[lean_lib]]
+name = "PolytopalProducts"
+
+[[lean_lib]]
+name = "TruncatedAudit"
+
+[[lean_lib]]
+name = "TruncatedPhysicalComparison"
+
+[[lean_lib]]
+name = "cubeGraph_00"
+
+[[lean_lib]]
+name = "cubeGraph_04"
+
+[[lean_lib]]
+name = "cubeGraph_08"
+
+[[lean_lib]]
+name = "cubeGraph_12"
+
+[[lean_lib]]
+name = "cubeGraph_16"
+
+[[lean_lib]]
+name = "cubeGraph_20"
+
+[[lean_lib]]
+name = "cubeGraph_24"
+
+[[lean_lib]]
+name = "cubeGraph_28"
+
+[[lean_lib]]
+name = "cubeGraph_32"
+
+[[lean_lib]]
+name = "cubeGraph_36"
+
+[[lean_lib]]
+name = "cubeGraph_40"
+
+[[lean_lib]]
+name = "cubeGraph_44"
+
+[[lean_lib]]
+name = "cubeGraph_48"
+
+[[lean_lib]]
+name = "cubeGraph_52"
+
+[[lean_lib]]
+name = "cubeGraph_56"
+
+[[lean_lib]]
+name = "cubeGraph_60"
+
+[[lean_lib]]
+name = "hexGraph_00"
+
+[[lean_lib]]
+name = "hexGraph_04"
+
+[[lean_lib]]
+name = "hexGraph_08"
+
+[[lean_lib]]
+name = "hexGraph_12"
+
+[[lean_lib]]
+name = "hexGraph_16"
+
+[[lean_lib]]
+name = "hexGraph_20"
+
+[[lean_lib]]
+name = "hexGraph_24"
+
+[[lean_lib]]
+name = "hexGraph_28"
+
+[[lean_lib]]
+name = "hexGraph_32"
+
+[[lean_lib]]
+name = "hexGraph_36"
+
+[[lean_lib]]
+name = "hexGraph_40"
+
+[[lean_lib]]
+name = "hexGraph_44"
+
+[[lean_lib]]
+name = "hexGraph_48"
+
+[[lean_lib]]
+name = "hexGraph_52"
+
+[[lean_lib]]
+name = "hexGraph_56"
+
+[[lean_lib]]
+name = "hexGraph_60"

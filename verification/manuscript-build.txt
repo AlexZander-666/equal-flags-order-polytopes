@@ -1,0 +1,6 @@
+Two independent builds gave byte-identical PDFs.
+Title:           Equal flag vectors and different codimension-three face counts for polytopal order polytopes
+Author:          Bowen Zuo
+Pages:           3
+7c35bbd5a7a764f1ec25f2a317e3da751d88ed80c1b31af76c19243012c463ca  paper/main.pdf
+c9d0f162a94bf206d8072b532c99a72326f736de45a990ba1d207a4056bc8a68  paper/main.tex

@@ -1,0 +1,149 @@
+\documentclass[11pt]{article}
+\pdftrailerid{}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\title{Equal flag vectors and different codimension-three face counts for polytopal order polytopes}
+\author{Bowen Zuo\\{\small East China University of Science and Technology}}
+\hypersetup{pdfauthor={Bowen Zuo},pdftitle={Equal flag vectors and different codimension-three face counts for polytopal order polytopes}}
+\date{26 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We give two convex three-polytopes with equal complete flag vectors whose full face lattices have order polytopes with 35,946 and 35,944 faces of dimension 25. Both order polytopes have dimension 28. We exhibit integer coordinates and obtain the numbers by intersecting covering equalities in an augmented Hasse diagram. A Lean proof transports both counts and the flag comparison from finite representations to the actual real convex bodies.
+\end{abstract}
+
+Let \(L(P)\) consist of all faces of a polytope \(P\), including
+\(\varnothing\) and \(P\). Its order polytope consists of the
+order-preserving functions \(L(P)\to[0,1]\). The object has one
+coordinate for each face. Lundstr\"om and Saud Maia Leite ask for
+the face and lattice enumerators of these order polytopes
+\cite[Question 6.6, preprint v5 Question 6.7]{LS}.
+We examine how much information the input flag vector retains in
+a particular coefficient of the face polynomial.
+
+\begin{theorem}
+Let \(H\) be the convex hull of \((i,i^2,0)\) for \(0\le i\le5\)
+and the apex \((0,0,1)\). Let \(T\) be the convex hull of the
+following seven points, indexed from zero in their displayed order:
+\[
+ (0,0,0),\ (6,0,0),\ (0,6,0),\ (2,2,-2),\
+ (1,1,1),\ (4,1,1),\ (1,4,1).
+\]
+Both have the same full flag vector. Nevertheless
+\[
+ f_{25}\bigl(\mathcal O(L(H))\bigr)=35946,\qquad
+ f_{25}\bigl(\mathcal O(L(T))\bigr)=35944.
+\]
+\end{theorem}
+
+\begin{proof}
+The six points on the parabola are the vertices of their plane
+convex hull, so \(H\) is a hexagonal pyramid. The first three
+points of \(T\) are noncollinear and the fourth is off their plane.
+The facets of \(T\), written as sets of indices, are
+\[
+ 013,\quad 023,\quad 123,\quad 456,\quad
+ 0145,\quad 0246,\quad 1256.
+\]
+For a direct check, take each triple of the seven input points and
+evaluate its oriented determinant against all seven points. Retain
+the zero set when at least one determinant is nonzero and all
+nonzero determinants have the same sign. Each facet contains three
+affinely independent vertices. Intersecting the resulting facets
+therefore gives the entire face lattice, including the empty face
+and the body. Both polytopes have seven vertices, twelve edges and
+seven facets. For rank subsets in the order
+\(\varnothing,0,1,2,01,02,12,012\) their flag counts are
+\[
+                  (1,7,12,7,24,24,24,48).
+\]
+Indeed every edge has two ends and two incident facets, and summing
+the number of vertices over the polygonal facets gives twice the
+number of edges.
+
+For a finite poset \(L\), adjoin a new bottom and a new top, with
+coordinates fixed at 0 and 1. Each arrow in its Hasse diagram
+imposes one inequality. Setting a subset of these inequalities
+to equality amounts to adding their reverse arrows. The vertices
+within each strongly connected component must then receive the
+same value. If the two pins coincide the intersection is empty.
+Otherwise it has dimension \(b-2\), where \(b\) is the number of
+components. In fact, the quotient is acyclic, with a least and a
+greatest element. Assign values in the open unit interval in a
+linear extension of its unpinned elements. Small independent
+perturbations preserve all strict inequalities between distinct
+components. Thus the displayed dimension is attained and the
+partition specifies the geometric face. This is the equality
+description of order-polytope faces \cite{Stanley}.
+
+Each of our diagrams has thirty vertices including the two pins,
+and sixty-four covering arrows. A face of codimension three is
+obtained from a triple of arrows: among its tight facet normals
+choose a basis of three in the full 28-dimensional ambient space.
+Their common equality subspace is the affine hull of the face.
+Intersecting it with the order polytope gives precisely that face.
+Conversely, a triple whose component count is 27 and which keeps
+the pins distinct defines a 25-dimensional face. Count distinct
+partitions, since different triples may specify the same face.
+
+\begin{center}
+\begin{tabular}{lrr}\hline
+ & Hexagonal pyramid \(H\) & Truncated bipyramid \(T\)\\\hline
+All triples \(\binom{64}{3}\) & 41,664 & 41,664\\
+Triples giving dimension 25 & 36,090 & 36,088\\
+Faces specified by one triple & 35,898 & 35,896\\
+Faces specified by four triples & 48 & 48\\
+Distinct 25-dimensional faces & 35,946 & 35,944\\\hline
+\end{tabular}
+\end{center}
+Here is pseudocode to reproduce the finite enumeration from either
+of the two coordinate lists. An order of the thirty vertices is
+fixed throughout each run.
+\begin{verbatim}
+facets = supporting_zero_sets_of_triples(coordinates)
+faces = all_intersections(facets, including_the_whole_body=True)
+arrows = covers_of_inclusion(faces) + bottom_and_top_pinning_arrows
+R = reflexive_transitive_closure(arrows)
+counts = empty_counter()
+for S in three_element_subsets(arrows):
+    R1 = transitive_closure(R union reversed_arrows(S))
+    if reachable(R1, top_pin, bottom_pin): continue
+    if number_of_distinct_rows(R1) == 27:
+        counts[tuple_of_rows(R1)] += 1
+\end{verbatim}
+Two vertices have the same reachability row exactly when they are
+mutually reachable. The rows encode the full preorder of the
+quotient induced by the original arrows and the new equalities:
+an equality partition uniquely determines this preorder. Thus the
+counter identifies precisely equal faces. Its length gives the
+last line of the table.
+\end{proof}
+
+The contribution concerns the specific codimension-three coefficient.
+The source question asks for enumerators of general polytopal
+order polytopes and leaves the form of a possible answer open.
+The accompanying standard-library Python program computes the table
+from the coordinates. In the Lean project the top declaration
+\texttt{PolytopalProducts.Truncated.}\\
+\texttt{same\_flags\_different\_order\_polytopes}
+uses affine span for input dimension, chains of covers in the
+actual face poset for the flag counts, and affine dimension of
+nonempty exposed order-polytope faces for the output counts.
+
+\paragraph{Acknowledgment.}
+ChatGPT assisted with the construction, independent checks,
+formal proof and preparation of the manuscript.
+
+\paragraph{Data and software.} The accompanying archive includes the Lean project, pinned dependencies, exact certificates and reproduction scripts.\par
+\begin{thebibliography}{9}
+\bibitem{LS} T. Lundstr\"om and L. Saud Maia Leite,
+Order polytopes of crown posets, \emph{European J. Combin.}
+\textbf{133} (2026), article 104304.
+\href{https://doi.org/10.1016/j.ejc.2025.104304}{doi:10.1016/j.ejc.2025.104304}.
+\bibitem{Stanley} R. P. Stanley, Two poset polytopes,
+\emph{Discrete Comput. Geom.} \textbf{1} (1986), 9--23.
+\href{https://doi.org/10.1007/BF02187680}{doi:10.1007/BF02187680}.
+\end{thebibliography}
+\end{document}

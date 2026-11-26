@@ -1,0 +1,25 @@
+{
+  "title": "Equal flag vectors and different codimension-three face counts for polytopal order polytopes",
+  "creators": [
+    {
+      "name": "Zuo, Bowen",
+      "affiliation": "East China University of Science and Technology"
+    }
+  ],
+  "description": "Two three-polytopes with the full flag vector (1,7,12,7,24,24,24,48) have order polytopes with 35,946 and 35,944 faces of dimension 25. Original software is available under Apache-2.0. The paper carries a separate copyright notice.",
+  "version": "1.0.0",
+  "upload_type": "software",
+  "license": "Apache-2.0",
+  "keywords": [
+    "algebraic combinatorics",
+    "Lean 4",
+    "order polytopes"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/AlexZander-666/equal-flags-order-polytopes",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}
