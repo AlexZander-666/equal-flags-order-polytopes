@@ -17,3 +17,7 @@ python3 -Bu formal/verify_lean.py formal TruncatedAudit --jobs 2
 The coordinate checker reconstructs supporting facets, all face inclusions, and every contraction of three covering arrows. It uses Python’s standard library. The Lean verifier builds from the locked project sources, checks twelve declarations and independently replays the kernel on 93 local modules. For the geometric statement using actual face posets see [the final theorem](formal/TruncatedPhysicalComparison.lean). See [the dated replay](verification/spark-replay.txt) and [coordinate counts](verification/counts.json).
 
 Bowen Zuo, East China University of Science and Technology. Version 1.0.0, 26 November 2026. ChatGPT assisted with mathematical derivation, independent checks, formalization and drafting. The software uses Apache-2.0 and the manuscript carries a separate copyright notice.
+
+## Authorship
+
+The tagged release v1.0.0 lists Bowen Zuo as sole author. It remains unchanged and may be cited as it is. The manuscript prepared for journal submission is joint work of Bowen Zuo and Xiaojuan Luo (corresponding author), both of East China University of Science and Technology.
