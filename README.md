@@ -20,4 +20,4 @@ Bowen Zuo, East China University of Science and Technology. Version 1.0.0, 26 No
 
 ## Authorship
 
-The tagged release v1.0.0 lists Bowen Zuo as sole author. It remains unchanged and may be cited as it is. The manuscript prepared for journal submission is joint work of Bowen Zuo and Xiaojuan Luo (corresponding author), both of East China University of Science and Technology.
+The tagged release v1.0.0 lists Bowen Zuo as sole author. It remains unchanged and may be cited as it is. The manuscript prepared for journal submission lists Bowen Zuo and Xiaojuan Luo as authors and identifies Xiaojuan Luo as the corresponding author. Both authors are affiliated with East China University of Science and Technology.
